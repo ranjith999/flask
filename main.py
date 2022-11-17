@@ -3,12 +3,12 @@ import http.client
 import json
 
 
-app=Flask(__name__)
+app=Flask(__name__)                 
 
 conn = http.client.HTTPSConnection("imdb8.p.rapidapi.com")
 
 headers = {
-        'X-RapidAPI-Key': "f44a051006msh4760537df13eceap164869jsnd1fc47d135ce",
+        'X-RapidAPI-Key': "<key>",
         'X-RapidAPI-Host': "imdb8.p.rapidapi.com"
         }
 
