@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
 </head>
 <body class="bg-black ">
@@ -34,11 +34,10 @@
 
     <div class="flex flex-wrap">
 
-
-        {% for j in data %}    
+        {% for j in data %}
         <div class=" m-4 max-w-sm   bg-gray-700 shadow-sm space-y-2  ">
         
-        <img src={{ j['image']['url'] }} class="max-h-auto"  />
+        <img src="{{j.get('image')['url']}}" class="max-h-auto"  />
     
         </div>
         {% endfor %} 

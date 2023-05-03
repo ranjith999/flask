@@ -1,14 +1,19 @@
 from flask import Flask,render_template,request
+import requests
 import http.client
 import json
+import ast
+
 
 
 app=Flask(__name__)                 
 
 conn = http.client.HTTPSConnection("imdb8.p.rapidapi.com")
 
+# print(conn)
+# exit()
 headers = {
-        'X-RapidAPI-Key': "<key>",
+        'X-RapidAPI-Key': "6f91d524dbmsh4299d3e3f862357p1cfce2jsnaed2bfed6cf8",
         'X-RapidAPI-Host': "imdb8.p.rapidapi.com"
         }
 
@@ -27,18 +32,18 @@ def getDetails(full_data):
 @app.route('/',methods=['GET','POST'])
 def home():
     search=request.args.get('search')
-
     #return f"d/title/v2/find?title={search}&limit=20&sortArg=moviemeter%2Casc"
     #return "/title/v2/find?title="+search+"&limit=20&sortArg=moviemeter%2Casc"
-    #return render_template('index.html')
+    
     search=search.replace(" ","%20")
     conn.request("GET",f"/title/v2/find?title={search}&limit=20&sortArg=moviemeter%2Casc", headers=headers)
     res = conn.getresponse()
     data = res.read()
+    #print(type(datad))
     datad =json.loads(data)
-    print(data)
-    respo=data.decode("utf-8")
-    y = json.loads(respo)
+    
+    #print(type(respo))
+    #y = json.loads(respo)
     try:
         return render_template('index.html',data=datad["results"],search=search)
     except KeyError:
