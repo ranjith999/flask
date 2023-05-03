@@ -13,7 +13,7 @@ conn = http.client.HTTPSConnection("imdb8.p.rapidapi.com")
 # print(conn)
 # exit()
 headers = {
-        'X-RapidAPI-Key': "6f91d524dbmsh4299d3e3f862357p1cfce2jsnaed2bfed6cf8",
+        'X-RapidAPI-Key': "",
         'X-RapidAPI-Host': "imdb8.p.rapidapi.com"
         }
 
