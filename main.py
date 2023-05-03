@@ -35,7 +35,6 @@ def home():
     #return f"d/title/v2/find?title={search}&limit=20&sortArg=moviemeter%2Casc"
     #return "/title/v2/find?title="+search+"&limit=20&sortArg=moviemeter%2Casc"
     
-    search=search.replace(" ","%20")
     conn.request("GET",f"/title/v2/find?title={search}&limit=20&sortArg=moviemeter%2Casc", headers=headers)
     res = conn.getresponse()
     data = res.read()
@@ -44,10 +43,12 @@ def home():
     
     #print(type(respo))
     #y = json.loads(respo)
-    try:
+    if search:
+        search=search.replace(" ","%20")
         return render_template('index.html',data=datad["results"],search=search)
-    except KeyError:
+    else:
         return render_template('index.html')
+
     
         
 
